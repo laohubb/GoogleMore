@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GoogleMore
 // @namespace    https://greasyfork.org/zh-CN/scripts/469906-googlemore
-// @version      1.1.8
+// @version      1.1.9
 // @description  谷歌搜索快速跳转搜索其他网站
 // @author       marumaru
 // @license MIT
@@ -23,17 +23,16 @@
         var navigation = document.querySelector('[role="navigation"]');
         navigation.style.width = 'calc(var(--center-width) + var(--rhs-margin) + var(--rhs-width) + -170px)';
 
-        // 在找到的元素内找到文本内容为"图片"的元素
-        var imageElement = Array.from(document.getElementsByTagName('*')).find(el => el.innerText === '图片');
+
+
+        // 导航条第一个元素
+        const bar = document.querySelector('[data-st-cnt="mode"]')
+        let imageElement = bar.querySelectorAll("a")[0];
+
+
+        //var imageElement = Array.from(document.getElementsByTagName('*')).find(el => el.innerText === '图片');
         console.log('imageElement: ', imageElement);
-        function getDeepestChild(element) {
-            // 如果元素没有子元素，就返回元素本身
-            if (element.children.length === 0) {
-                return element;
-            }
-            // 否则，递归调用getDeepestChild函数，获取第一个子元素的最深层次的子元素
-            return getDeepestChild(element.children[0]);
-        }
+
 
 
 
@@ -81,7 +80,14 @@
                 aElement.href = "javascript:void(0)";
 
             }
-
+            function getDeepestChild(element) {
+                // 如果元素没有子元素，就返回元素本身
+                if (element.children.length === 0) {
+                    return element;
+                }
+                // 否则，递归调用getDeepestChild函数，获取第一个子元素的最深层次的子元素
+                return getDeepestChild(element.children[0]);
+            }
             const deepChild = getDeepestChild(copiedElement)
             deepChild.innerText = item.name;
             return copiedElement;
