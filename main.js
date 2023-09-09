@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GoogleMore
 // @namespace    https://greasyfork.org/zh-CN/scripts/469906-googlemore
-// @version      1.1.9
+// @version      1.2.0
 // @description  谷歌搜索快速跳转搜索其他网站
 // @author       marumaru
 // @license MIT
@@ -53,6 +53,13 @@
             { name: '知乎', url: 'https://www.zhihu.com/search?type=content&q=' },
             { name: '必应', url: 'https://www.bing.com/search?cc=sg&q=' },
             { name: 'V2EX', url: 'https://www.google.com/search?q=site:v2ex.com/t%20' },
+            { name: '哔哩哔哩', url: 'https://search.bilibili.com/all?keyword=' },
+            { name: 'YouTube', url: 'https://www.youtube.com/results?search_query=' },
+            { name: '淘宝', url: 'https://s.taobao.com/search?commend=all&ie=utf8&initiative_id=tbindexz_20170306&q=' },
+
+
+
+
         ];
         // 获取用户自定义的 data 数组，如果没有则使用默认的数组
         const customCofig = GM_getValue('data') || defaultConfig
