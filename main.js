@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GoogleMore
 // @namespace    https://greasyfork.org/zh-CN/scripts/469906-googlemore
-// @version      1.2.0
+// @version      1.2.1
 // @description  谷歌搜索快速跳转搜索其他网站
 // @author       marumaru
 // @license MIT
@@ -107,7 +107,7 @@
             const newElement = createLinkElement(item)
             newElement.addEventListener('mouseenter', function (event) {
                 var inputElement = document.querySelector('#APjFqb');
-                keyword = inputElement.value
+                keyword = encodeURIComponent(inputElement.value)
 
                 // 修改链接的href属性，使其包含输入框中的关键词
 
