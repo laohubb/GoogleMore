@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         GoogleMore
 // @namespace    https://greasyfork.org/zh-CN/scripts/469906-googlemore
-// @version      1.2.1
+// @version      1.2.2
 // @description  谷歌搜索快速跳转搜索其他网站
 // @author       marumaru
 // @license MIT
@@ -25,9 +25,10 @@
 
 
 
-        // 导航条第一个元素
+        // 导航条最后一个元素
         const bar = document.querySelector('[data-st-cnt="mode"]')
-        let imageElement = bar.querySelectorAll("a")[0];
+        let imageElementAll = bar.querySelectorAll("a");
+        let imageElement = bar.querySelectorAll("a")[imageElementAll.length - 1];
 
 
         //var imageElement = Array.from(document.getElementsByTagName('*')).find(el => el.innerText === '图片');
@@ -97,6 +98,7 @@
             }
             const deepChild = getDeepestChild(copiedElement)
             deepChild.innerText = item.name;
+            copiedElement.style.cssText = 'margin-right:5px'
             return copiedElement;
         }
 
